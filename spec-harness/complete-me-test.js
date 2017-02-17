@@ -40,7 +40,7 @@ describe('spec harness', () => {
 
     complete.populate(text);
 
-    assert.equal(text.length, complete.count)
+    assert.equal(text.length, complete.length)
   });
 
   it('should suggest the correct words', () => {
@@ -49,7 +49,7 @@ describe('spec harness', () => {
 
     assert.deepEqual(["williwaw", "wizardly"], complete.suggest('wi').sort())
 
-    complete.select('wizardly')
+    complete.select('wi', 'wizardly')
 
     assert.deepEqual(["wizardly", "williwaw"], complete.suggest('wi'))
   });
@@ -60,9 +60,9 @@ describe('spec harness', () => {
     complete.populate(text);
 
     assert.deepEqual(["doggerel", "doggereler", "doggerelism", "doggerelist",
-                 "doggerelize", "doggerelizer"], complete.suggest("doggerel"))
+                 "doggerelize", "doggerelizer"], complete.suggest("doggerel").sort())
 
-    complete.select( 'doggerelist')
+    complete.select('doggerel', 'doggerelist')
     assert.deepEqual('doggerelist', complete.suggest('doggerel')[0])
 
   });
