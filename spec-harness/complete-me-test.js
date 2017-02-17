@@ -1,7 +1,6 @@
-import CompleteMe from '../complete-me/scripts/CompleteMe'
-import { assert }  from 'assert'
+import CompleteMe from '../../complete-me/tdd/scripts/CompleteMe'
+import { assert }  from 'chai'
 const fs = require('fs')
-
 
 describe('spec harness', () => {
   var complete
@@ -9,7 +8,7 @@ describe('spec harness', () => {
   beforeEach(() => {
     complete = new CompleteMe
   });
-  
+
   it('should have a count of 0', () => {
     assert.equal(complete.count, 0)
   });
@@ -37,14 +36,14 @@ describe('spec harness', () => {
 
 
   it('should read in a small data set', () => {
-    let text = fs.readFileSystem('./medium.txt','utf-8').trim().split('\n')
+    let text = fs.readFileSync('./spec-harness/medium.txt','utf-8').trim().split('\n')
     complete.populate(text);
 
     assert.equal(text.length, complete.length)
   });
 
   it('should suggest the correct words', () => {
-    let text = fs.readFileSystem('./medium.txt','utf-8').trim().split('\n')
+    let text = fs.readFileSync('./spec-harness/medium.txt','utf-8').trim().split('\n')
     complete.populate(text);
 
     assert.deepEqual(["williwaw", "wizardly"], complete.suggest('w').sort())
@@ -55,9 +54,8 @@ describe('spec harness', () => {
   });
 
   it('should load in a large data set', ()=> {
-    let text = fs.readFileSystem('/usr/share/dict/words', 'utf-8')
+    let text = fs.readFileSync('/usr/share/dict/words', 'utf-8')
                  .trim().split('\n')
-
     complete.populate(text);
 
     assert.deepEqual(["doggerel", "doggereler", "doggerelism", "doggerelist",

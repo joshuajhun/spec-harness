@@ -1,0 +1,26 @@
+{
+  "name": "spec-harness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register spec-harness/complete-me-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuajhun/spec-harness.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshuajhun/spec-harness/issues"
+  },
+  "homepage": "https://github.com/joshuajhun/spec-harness#readme",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
+    "locus": "^2.0.1"
+  }
+}
